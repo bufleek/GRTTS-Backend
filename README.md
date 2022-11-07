@@ -3,3 +3,10 @@ A Django Rest-Framework Backend project for [GRTTS](https://github.com/bufleek/G
 
 ## Basic Entity Relationship Diagram
 <img width="2464" alt="GRTTS ER Model" src="https://user-images.githubusercontent.com/55278288/197200841-1b5a3047-2dd1-4216-9452-e14daf28e974.png">
+
+## Tools Used
+- Django
+- Django Rest Framework
+- Python 3
+- Sqlite3
+
