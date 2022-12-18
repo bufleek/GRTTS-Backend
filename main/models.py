@@ -17,5 +17,5 @@ class Office(models.Model):
 class TimeLog(models.Model):
     user: Optional["User"] = models.ForeignKey("accounts.User", on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
-    time_in = models.DateTimeField(null=True, blank=True)
+    time_in = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     time_out = models.DateTimeField(null=True, blank=True)
