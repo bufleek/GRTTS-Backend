@@ -12,10 +12,9 @@ class UserTestCase(APITestCase):
 
     def test_authentication(self):
         data = {
-            'username': self.user.username,
-            'password': 'a_strong_pass',
+            'employee_id': self.user.username,
         }
         response = self.client.post('/api/auth/', data, format='json')
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["user"]["id"], self.user.id)
+        self.assertEqual(response.data["id"], self.user.id)
