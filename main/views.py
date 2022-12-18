@@ -1,7 +1,4 @@
-import datetime
-
 from django.utils import timezone
-from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -14,7 +11,7 @@ Gets employee offices
 """
 @api_view(["GET"])
 def get_employee_offices(request):
-    employee_id = request.data.get("employee_id", None)
+    employee_id = request.data.get("employee_id", request.GET["employee_id"])
     if not employee_id:
         return Response(status=400, data={"employee_id": ["This field is required"]})
     try:
@@ -60,7 +57,7 @@ def check_out(request):
 
 @api_view(["GET"])
 def get_time_reports(request):
-    employee_id = request.data.get("employee_id", None)
+    employee_id = request.data.get("employee_id", request.GET["employee_id"])
     if not employee_id:
         return Response(status=400, data={"employee_id": ["This field is required"]})
     try:
