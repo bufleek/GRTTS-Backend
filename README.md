@@ -14,4 +14,7 @@
  
  - Time Reports & Check Out
   ![Time Reports & Check Out Sequence Diagrams](https://user-images.githubusercontent.com/55278288/208413992-3bbdcc92-631b-4b46-8767-cd46890f1c2b.png)
-
+  
+  
+  ## Flow Chart
+  ![Flow Chart](https://user-images.githubusercontent.com/55278288/208420985-1e572d20-3ef8-4dc5-979e-2b319aa4e174.png)
