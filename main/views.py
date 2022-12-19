@@ -1,7 +1,4 @@
-import datetime
-
 from django.utils import timezone
-from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -14,7 +11,7 @@ Gets employee offices
 """
 @api_view(["GET"])
 def get_employee_offices(request):
-    employee_id = request.data.get("employee_id", None)
+    employee_id = request.data.get("employee_id", request.GET["employee_id"])
     if not employee_id:
         return Response(status=400, data={"employee_id": ["This field is required"]})
     try:
@@ -56,3 +53,19 @@ def check_out(request):
         return Response(data={**TimeLogSerializer(last_log).data})
     except User.DoesNotExist:
         return Response(status=400,data={"detail": "Employee with that id does not exist"})
+ 
+
+@api_view(["GET"])
+def get_time_reports(request):
+    employee_id = request.data.get("employee_id", request.GET["employee_id"])
+    if not employee_id:
+        return Response(status=400, data={"employee_id": ["This field is required"]})
+    try:
+        user = User.objects.get(username=employee_id)
+        time_reports = []
+        for report in TimeLog.objects.filter(user=user).order_by("-id").all():
+            time_reports.append(TimeLogSerializer(report).data)
+        return Response(data=time_reports)
+    except User.DoesNotExist:
+        return Response(status=400,data={"detail": "Employee with that id does not exist"})
+ 
